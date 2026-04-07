@@ -1,3 +1,9 @@
+---
+name: molecular-simulation
+description: "分子动力学模拟与AMBER全栈技能。覆盖AMBER/VMD/PyMOL/Gaussian09/Chimera等主流MD软件，支持金属蛋白/配体/膜蛋白等高阶体系处理，以及DeepMD/ANI等AI+MD前沿技术。当用户提及MD/分子动力学/AMBER/VMD/PyMOL/Gaussian/轨迹分析等关键词时激活。"
+version: 2.0.0
+---
+
 # Molecular Simulation 全栈技能 v2.0
 
 > **版本**: 2.0.0 | **更新**: 2026-04-07
