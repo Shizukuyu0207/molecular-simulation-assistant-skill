@@ -32,6 +32,12 @@ molecular-simulation/
 
 ## Installation
 
+### npx (simplest)
+
+```bash
+npx skills add shizukuyu0207/molecular-simulation-assistant-skill
+```
+
 ### npm (recommended)
 
 ```bash
