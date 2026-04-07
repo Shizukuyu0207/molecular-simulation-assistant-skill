@@ -1,0 +1,27 @@
+{
+  "name": "@shizukuyu0207/molecular-simulation-skill",
+  "version": "2.0.0",
+  "description": "A Claude Code skill for molecular dynamics simulation — covering AMBER, VMD, PyMOL, Gaussian09, Chimera, and more",
+  "main": "SKILL.md",
+  "scripts": {
+    "test": "echo \"Read SKILL.md for usage\""
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "molecular-dynamics",
+    "amber",
+    "vmd",
+    "pymol",
+    "gaussian",
+    "md",
+    "simulation"
+  ],
+  "author": "Shizukuyu0207",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shizukuyu0207/molecular-simulation-assistant-skill.git"
+  }
+}
