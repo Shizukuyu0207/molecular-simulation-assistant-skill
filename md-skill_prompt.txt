@@ -1,0 +1,7 @@
+找到home\shizuku\.claude\skills\molecular-simulation后，创建一个5人的Agent-Team,进行对molecular-simulation这个skill的完善补充和拓展，并且要包含各款分子动力学软件的使用方法：VMD，pymol,gaussian09，chimera,等等
+一人负责充当leader,充分构思skill的完整框架、使用方式、触发条件，为每位成员派发详细任务，统筹全局
+一人负责上网大量查询收集有关分子动力学基础知识，amber官网所有的教程，
+一人负责查阅收集各大软件官网手册mannual等，包括但不限于，
+一人负责深度学习理解所有获取到的内容并进行整合压缩，
+一人负责最后的代码编写，并且创建为一个能调用的完整skill，并且加载到全局。
+现在请开始
