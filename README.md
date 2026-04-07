@@ -1,101 +1,94 @@
 # molecular-simulation-assistant-skill
 
-> Claude Code 分子动力学全栈技能包 —— 覆盖 AMBER / VMD / PyMOL / Gaussian09 / Chimera 等主流 MD 软件。
+A Claude Code skill for molecular dynamics simulation—covering AMBER, VMD, PyMOL, Gaussian09, Chimera, and more.
 
-## 简介
+## What it does
 
-本 skill 为 Claude Code (Claude Desktop) 提供完整的**分子动力学模拟**知识支持。当用户提及 MD 相关关键词时自动激活，提供从理论到实战的端到端指导。
+This skill activates when you mention anything MD-related. It gives you end-to-end guidance from theory to practice.
 
-## 核心功能
+## Features
 
-| 类别 | 内容 |
-|------|------|
-| **AMBER 全工具链** | pdb4amber / tleap / antechamber / sander/pmemd / cpptraj / MMPBSA.py / parmed |
-| **可视化软件** | VMD (Tcl脚本/轨迹分析) · PyMOL (Python API/渲染) · Chimera (MD Movie) |
-| **量子化学** | Gaussian09 输入文件 / 基组选择 / RESP 电荷 / 与 AMBER 联用 |
-| **高阶体系** | 金属蛋白 (Zn/12-6-4 LJ) · 配体-蛋白 · 膜蛋白 · 核酸 · 糖类 |
-| **增强采样** | Metadynamics · 伞形采样 · FEP · MSM |
-| **AI + MD** | DeepMD · ANI · 机器学习力场 |
+| Category | Coverage |
+|----------|----------|
+| **AMBER toolchain** | pdb4amber / tleap / antechamber / sander/pmemd / cpptraj / MMPBSA.py / parmed |
+| **Visualization** | VMD (Tcl/trajectory) · PyMOL (Python API/ray tracing) · Chimera (MD Movie) |
+| **Quantum chemistry** | Gaussian09 input files / basis sets / RESP charges / AMBER coupling |
+| **Advanced systems** | Metalloproteins (Zn/12-6-4 LJ) · ligand-protein · membrane proteins · nucleic acids · glycans |
+| **Enhanced sampling** | Metadynamics · umbrella sampling · FEP · MSM |
+| **AI + MD** | DeepMD · ANI · machine learning force fields |
 
-## 文件结构
+## File structure
 
 ```
 molecular-simulation/
-├── SKILL.md                          # 主技能文件 (v2.0, 14KB)
-├── integrated_knowledge.md            # 整合压缩知识库
-├── research_agent1_output.md         # AMBER 官方教程调研
-├── research_agent2_output.md         # 软件手册调研 (VMD/PyMOL/Gaussian/Chimera)
-├── 3CA2_MD_Simulation_Protocol.md   # 3CA2 碳酸酐酶 MD 实战流程
-├── 3CA2_PreMD_Protocol.md            # tleap 前处理详细流程
-└── md-skill_prompt.txt               # 原始需求描述
+├── SKILL.md                          # main skill file (v2.0)
+├── integrated_knowledge.md            # compressed knowledge base
+├── research_agent1_output.md         # AMBER tutorial research
+├── research_agent2_output.md         # software manual research (VMD/PyMOL/Gaussian/Chimera)
+├── 3CA2_MD_Simulation_Protocol.md   # 3CA2 carbonic anhydrase MD workflow
+├── 3CA2_PreMD_Protocol.md            # tleap preprocessing
+└── md-skill_prompt.txt               # original task description
 ```
 
-## 快速开始
-
-### 安装
-
-将本仓库克隆到 Claude Code skills 目录：
+## Quick start
 
 ```bash
 git clone https://github.com/Shizuku0207/molecular-simulation-assistant-skill.git molecular-simulation
 ```
 
-或软链接到 skills 目录：
+Or symlink:
 
 ```bash
 ln -s /path/to/molecular-simulation-assistant-skill ~/.claude/skills/molecular-simulation
 ```
 
-### 触发方式
+## Activation
 
-在 Claude Code 中直接提及以下任一关键词即可激活：
+Mention any of these in Claude Code to trigger the skill:
 
-- `分子动力学` / `MD模拟` / `AMBER`
-- `VMD` / `PyMOL` / `Gaussian` / `Chimera`
-- `配体参数化` / `RMSD` / `MM-PBSA` / `金属蛋白`
-- `GAFF力场` / `ff19SB` / `轨迹分析`
+- `分子动力学` / `MD` / `AMBER` / `VMD` / `PyMOL` / `Gaussian` / `Chimera`
+- `配体参数化` / `RMSD` / `MM-PBSA` / `金属蛋白` / `GAFF` / `轨迹分析`
 
-## Skill 内容示例
+## Examples
 
-### AMBER 七步法
+### AMBER seven-step workflow
 ```
-pdb4amber → tleap → 最小化 → NVT加热 → NPT平衡 → 成品MD → cpptraj分析
+pdb4amber → tleap → minimize → NVT heat → NPT equilibrate → production MD → cpptraj analysis
 ```
 
-### VMD 读取 AMBER 轨迹
+### VMD loading AMBER trajectories
 ```tcl
 mol new system.prmtop type amberparm
 animate read netcdf md.nc waitfor all
 ```
 
-### Gaussian09 RESP 电荷 → AMBER
+### Gaussian09 RESP → AMBER
 ```bash
 antechamber -i ligand.mol2 -fi mol2 -o ligand_gaff.mol2 -fo mol2 -c bcc
 parmchk2 -i ligand_gaff.mol2 -f mol2 -o ligand.frcmod
 ```
 
-## 案例
+## Case study
 
-### 3CA2 碳酸酐酶 MD 模拟
+3CA2 carbonic anhydrase MD simulation (ff19SB + OPC3 + Zn²⁺ nonbonded model + AMS ligand + 150mM NaCl):
 
-完整复现论文级别 MD 流程（ff19SB + OPC3 + Zn²⁺非键合模型 + AMS配体 + 150mM NaCl），详见：
-- `3CA2_PreMD_Protocol.md` — tleap 前处理
-- `3CA2_MD_Simulation_Protocol.md` — 完整七步 MD
+- `3CA2_PreMD_Protocol.md` — tleap preprocessing
+- `3CA2_MD_Simulation_Protocol.md` — full seven-step MD
 
-## 参考资料
+## Links
 
-- AMBER 官网: https://ambermd.org
-- AMBER 教程: https://ambermd.org/tutorials/
+- AMBER: https://ambermd.org
+- AMBER tutorials: https://ambermd.org/tutorials/
 - VMD: https://www.ks.uiuc.edu/Research/vmd/
 - PyMOL: https://pymol.org/
 - Gaussian: https://gaussian.com/
 - Chimera: https://www.cgl.ucsf.edu/chimera/
 
-## 版本
+## Changelog
 
-- v2.0.0 (2026-04-07) — 新增 VMD/PyMOL/Gaussian09/Chimera 完整指南 + AI+MD 前沿
-- v1.0.0 (2026-04-06) — AMBER 全工具链基础版
+- **v2.0.0** (2026-04-07) — VMD/PyMOL/Gaussian09/Chimera guides + AI+MD前沿
+- **v1.0.0** (2026-04-06) — AMBER toolchain base
 
-## 许可证
+## License
 
-MIT License
+MIT
