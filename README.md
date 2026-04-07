@@ -30,7 +30,15 @@ molecular-simulation/
 └── md-skill_prompt.txt               # original task description
 ```
 
-## Quick start
+## Installation
+
+### npm (recommended)
+
+```bash
+npm install -g @shizukuyu0207/molecular-simulation-skill
+```
+
+### git clone
 
 ```bash
 git clone https://github.com/Shizuku0207/molecular-simulation-assistant-skill.git molecular-simulation
